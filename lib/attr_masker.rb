@@ -13,7 +13,7 @@ module AttrMasker
   autoload :Performer, "attr_masker/performer"
 
   module Maskers
-    autoload :Replacing, "attr_masker/maskers/replacing"
+    autoload :Substituting, "attr_masker/maskers/substituting"
     autoload :Simple, "attr_masker/maskers/simple"
   end
 

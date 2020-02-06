@@ -2,7 +2,7 @@
 #
 module AttrMasker
   module Maskers
-    # +Replacing+ masker replaces every character of string which is being
+    # +Substituting+ masker replaces every character of string which is being
     # masked with +replacement+ one, preserving the length of the masked string
     # (provided that a replacement string contains a single character, which is
     # a typical case). Optionally, non-alphanumeric characters like dashes or
@@ -10,17 +10,17 @@ module AttrMasker
     #
     # @example Would mask "Adam West" as "XXXXXXXXX"
     #   class User < ActiveRecord::Base
-    #     m = AttrMasker::Maskers::Replacing.new(replacement: "X")
+    #     m = AttrMasker::Maskers::Substituting.new(replacement: "X")
     #     attr_masker :name, :masker => m
     #   end
     #
     # @example Would mask "123-456-789" as "XXX-XXX-XXX"
     #   class User < ActiveRecord::Base
-    #     m = AttrMasker::Maskers::Replacing.new(
+    #     m = AttrMasker::Maskers::Substituting.new(
     #         replacement: "X", alphanum_only: true)
     #     attr_masker :phone, :masker => m
     #   end
-    class Replacing
+    class Substituting
       attr_reader :replacement, :alphanum_only
 
       # @param replacement [String] replacement string
