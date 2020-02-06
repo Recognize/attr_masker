@@ -112,7 +112,7 @@ Would set both `first_name` and `last_name` attributes to `"(redacted)"`.
 
 `AttrMasker::Maskers::Substituting`::
 +
-Replaces characters with some masker string (single asterisk by default).
+Substitutes characters with some masker string (single asterisk by default).
 Can be initialized with options.
 +
 [options="header"]
