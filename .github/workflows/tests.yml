@@ -34,9 +34,9 @@ jobs:
           - activerecord
           - mongoid
 
-        include:
-          - gemfile: Rails-4.2
-            bundler_version: "1.17.3"
+        # include:
+        #   - gemfile: Rails-4.2
+        #     bundler_version: "1.17.3"
 
         exclude:
           # Rails 4.2 refuses to install on Ruby 2.7 for some reason;
@@ -58,7 +58,8 @@ jobs:
       # In case if this trick stops working, consider using
       # BUNDLE_ALLOW_BUNDLER_DEPENDENCY_CONFLICTS,
       # documented here: https://bundler.io/v2.1/man/bundle-config.1.html
-      BUNDLER_VERSION: ${{ matrix.bundler_version || '2.1.4' }}
+      # BUNDLER_VERSION: ${{ matrix.bundler_version || '2.1.4' }}
+      BUNDLE_ALLOW_BUNDLER_DEPENDENCY_CONFLICTS: 1
 
     steps:
       - uses: actions/checkout@v2
@@ -79,7 +80,8 @@ jobs:
       # This is needed because Ruby 2.7 works better with Bundler 2.x, whereas
       # Rails 4.2 requires Bundler 1.x.
       - name: Install Bundler
-        run: gem install bundler --conservative -v "${BUNDLER_VERSION}"
+        run: gem install bundler
+        # run: gem install bundler --conservative -v "${BUNDLER_VERSION}"
 
       # Install gems using Bundler version specified with $BUNDLER_VERSION.
       - name: Install gems
